@@ -4,6 +4,12 @@ from django.contrib.auth.models import User
 import datetime
 
 
+class Profile(models.Model):
+    user = models.ForeignKey(User)
+    twitter_token = models.CharField(max_length=255)
+    twitter_secret = models.CharField(max_length=255)
+
+
 class Campaign(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
