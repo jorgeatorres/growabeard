@@ -1,0 +1,4 @@
+Django
+oauth2
+Pillow
+pytz
