@@ -23,7 +23,11 @@ urlpatterns = [
     url(r'^upload/$', views.upload, name='upload'),
 
     url(r'^$', views.index),
-    url(r'^', include('django.contrib.auth.urls')),
+    # url(r'^', include('django.contrib.auth.urls')),
+
+    url(r'^login/$', views.twitter_login, name='login'),
+    url(r'^authenticated/$', views.twitter_authenticate, name='authenticated'),
+
     url(r'^admin/', admin.site.urls),
 ]
 

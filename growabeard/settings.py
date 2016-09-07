@@ -126,5 +126,8 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
 
+AUTH_PROFILE_MODULE = 'growabeard.Profile'
+
 LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
