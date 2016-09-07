@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -121,7 +122,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+    os.path.join(PROJECT_DIR, 'static')
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
@@ -132,3 +133,6 @@ AUTH_PROFILE_MODULE = 'growabeard.Profile'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+TWITTER_KEY = 'kwa8W1YhY1XviF4f3k0YmOdnV'
+TWITTER_SECRET = 'FOes8XcqUsk5bMChxGMeDf8VeVs5aV76ovhO63vyBaM0TxZh5Z'
