@@ -1,0 +1,13 @@
+<form action="{% if action %}{{ action }}{% endif %}" method="post" id="{% if id %}{{ id }}{% endif %}" {% if upload %}enctype="multipart/form-data"{% endif %}>
+    {{ form.media }}
+    {% csrf_token %}
+
+    {{ form }}
+
+    <div class="form-actions">
+        {% if cancel_url %}
+        <a href="{% if 'back' == cancel_url %}{{ request.META.HTTP_REFERER }}{% else %}{{ cancel_url }}{% endif %}" class="btn btn-secondary btn-form-cancel">{{ _("Cancel") }}</a>
+        {% endif %}
+        <input type="submit" value="{{ submit|default:_("Save") }}" />
+    </div>
+</form>

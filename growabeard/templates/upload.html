@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ _("Upload Entry") }}</h1>
+
+{% include 'shared/form.html' with form=form id='upload_form' upload=True %}
+
+{% endblock %}
