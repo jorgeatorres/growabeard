@@ -19,10 +19,12 @@ from django.conf.urls.static import static
 from . import views, settings
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('django.contrib.auth.urls')),
+    url(r'^c/(?P<id>[0-9]+)/$', views.campaign_details, name='campaign-details'),
+    url(r'^upload/$', views.upload, name='upload'),
+
     url(r'^$', views.index),
-    url(r'^upload/$', views.upload, name='upload')
+    url(r'^', include('django.contrib.auth.urls')),
+    url(r'^admin/', admin.site.urls),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
