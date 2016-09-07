@@ -41,11 +41,9 @@ def upload(request):
 
 def campaign_details(request, id):
     campaign = get_object_or_404(Campaign, pk=id)
-    total_days = (campaign.end_date - campaign.start_date).days
+    beards, days, members = _members_and_their_beards(campaign, True)
 
-    beards = _members_and_their_beards(campaign, True)
-
-    return render(request, 'campaign.html', dict(campaign=campaign, total_days=total_days, beards=beards))
+    return render(request, 'campaign.html', dict(campaign=campaign, members=members, beards=beards, days=days))
 
 
 def _members_and_their_beards(campaign, include_future=False):
@@ -59,13 +57,19 @@ def _members_and_their_beards(campaign, include_future=False):
     days = [campaign.start_date + timedelta(days=i) for i in range(0, total_days)]
     members = [User.objects.get(pk=x) for x in campaign.entries.values_list('user__id', flat=True).distinct()]
 
-    res = dict()
+    beards = []
 
-    for m in members:
-        res[m] = []
+    for d in days:
+        de = {'day': d, 'relative_date': 'past', 'entries': []}
 
-        for d in days:
-            e = campaign.entries.filter(user=m, created_at__date=d).first()
-            res[m].append({'day': d, 'item': e})
+        if today == d:
+            de['relative_date'] = 'today'
+        elif today < d:
+            de['relative_date'] = 'future'
 
-    return res
+        for m in members:
+            de['entries'].append({'user': m, 'entry': campaign.entries.filter(user=m, created_at__date=d).first()})
+
+        beards.append(de)
+
+    return beards, days, members

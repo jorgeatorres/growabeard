@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <h1>{{ campaign.title|default:'Untitled Campaign' }}</h1>
@@ -13,25 +14,36 @@
     <dd class="start-date">{{ campaign.end_date }}</dd>
 </dl>
 
-<div class="campaign-entries">
-{% for user, entries in beards.items %}
-    <div class="member-entries" data-member-id="{{ user.id }}">
-        <div class="user-details">
-            {{ user }}
-        </div>
-        <div class="entries">
-            {% for e in entries %}
-            <div class="entry">
-                {% if e.item %}
-                    <img src="{{ e.item.file.url }}" />
+<table class="campaign-entries">
+    <thead>
+        <th></th>
+        {% for m in members %}
+        <th class="user-col">
+            <div class="user-avatar">{{ m }}</div>
+        </th>
+        {% endfor %}
+    </thead>
+
+    <tbody>
+        {% for day in beards %}
+        <tr class="campaign-date-row {{ day.relative_date }}" id="{% if 'today' == day.relative_date %}today{% endif %}">
+            <th class="campaign-day-date" scope="row">
+                {{ day.day }}
+            </th>
+            {% for e in day.entries %}
+            <td class="campaign-entry">
+                {% if e.entry %}
+                    <img src="{{ e.entry.file.url }}" />
                 {% else %}
-                    <div class="img-placeholder">{{ e.day }}</div>
+                    <div class="img-placeholder">
+                        <img src="{% static 'img/beard.png' %}" />
+                    </div>
                 {% endif %}
-            </div>
+            </td>
             {% endfor %}
-        </div>
-    </div>
-{% endfor %}
-</div>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}
