@@ -1,5 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-HI THERE
+<h1>{{ campaign.title|default:'Untitled Campaign' }}</h1>
+
+{% if not campaign.has_ended %}<a href="{% url 'upload' %}" class="btn">{{ _("Upload Beard") }}</a>{% endif %}
+
+<dl class="campaign-dates">
+    <dt class="start-date">{{ _("Began:") }}</dt>
+    <dd class="start-date">{{ campaign.start_date }}</dd>
+
+    <dt class="start-date">{% if campaign.has_ended %}{{ _("Ended:") }}{% else %}{{ _("Ends:") }}{% endif %}</dt>
+    <dd class="start-date">{{ campaign.end_date }}</dd>
+</dl>
+
+<div class="campaign-entries">
+{% for user, entries in beards.items %}
+    <div class="member-entries" data-member-id="{{ user.id }}">
+        <div class="user-details">
+            {{ user }}
+        </div>
+        <div class="entries">
+            {% for e in entries %}
+            <div class="entry">
+                {% if e.item %}
+                    <img src="{{ e.item.file.url }}" />
+                {% else %}
+                    <div class="img-placeholder">{{ e.day }}</div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}
+</div>
+
 {% endblock %}

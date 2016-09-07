@@ -12,6 +12,10 @@ class Campaign(models.Model):
     def __str__(self):
         return '%s (%s - %s)' % (self.title, self.start_date, self.end_date)
 
+    @property
+    def has_ended(self):
+        return datetime.date.today() > self.end_date
+
     @classmethod
     def get_active(cls):
         today = datetime.date.today()
