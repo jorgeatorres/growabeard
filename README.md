@@ -9,7 +9,7 @@ To start working on **Grow a Beard**, you need to:
 
 2. Then you have to actually install those requirements:
 
-        pip install -r requirements.txt
+        pip install -r default-requirements.txt
 
 3. Prepare an empty database:
 
