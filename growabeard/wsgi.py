@@ -11,6 +11,15 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
+from whitenoise.django import DjangoWhiteNoise
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "growabeard.settings")
 
+# Default Django application
+
 application = get_wsgi_application()
+
+# Serving static files with WhiteNoise
+# https://devcenter.heroku.com/articles/django-assets
+
+application = DjangoWhiteNoise(application)
