@@ -1,49 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block header %}
+<div class="header clearfix">
+    <div class="pull-left">
+        <div class="campaign-title">{{ campaign.title|default:'Untitled Campaign' }}</div>
+        <span class="campaign-times">// {{ campaign.start_date }} - {{ campaign.end_date }}</span>
+    </div>
+
+    <div class="campaign-actions pull-right">
+        {% if not campaign.has_ended %}
+        <a href="{% url 'upload' %}" class="btn"><i class="fa fa-plus-circle"></i> {{ _("Upload Beard") }}</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
 {% block content %}
-<h1>{{ campaign.title|default:'Untitled Campaign' }}</h1>
-
-{% if not campaign.has_ended %}<a href="{% url 'upload' %}" class="btn">{{ _("Upload Beard") }}</a>{% endif %}
-
-<dl class="campaign-dates">
-    <dt class="start-date">{{ _("Began:") }}</dt>
-    <dd class="start-date">{{ campaign.start_date }}</dd>
-
-    <dt class="start-date">{% if campaign.has_ended %}{{ _("Ended:") }}{% else %}{{ _("Ends:") }}{% endif %}</dt>
-    <dd class="start-date">{{ campaign.end_date }}</dd>
-</dl>
-
-<table class="campaign-entries">
-    <thead>
-        <th></th>
-        {% for m in members %}
-        <th class="user-col">
-            <div class="user-avatar">{{ m }}</div>
-        </th>
-        {% endfor %}
-    </thead>
-
-    <tbody>
-        {% for day in beards %}
-        <tr class="campaign-date-row {{ day.relative_date }}" id="{% if 'today' == day.relative_date %}today{% endif %}">
-            <th class="campaign-day-date" scope="row">
-                {{ day.day }}
-            </th>
-            {% for e in day.entries %}
-            <td class="campaign-entry">
-                {% if e.entry %}
-                    <img src="{{ e.entry.file.url }}" />
-                {% else %}
-                    <div class="img-placeholder">
-                        <img src="{% static 'img/beard.png' %}" />
-                    </div>
-                {% endif %}
-            </td>
-            {% endfor %}
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+    {% include 'campaign-view-h.html' with beards=beards %}
 {% endblock %}

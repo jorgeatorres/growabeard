@@ -1,0 +1,37 @@
+{% load static thumbnail %}
+<div class="beards-wrapper">
+    <table class="beards">
+        <thead>
+            <tr>
+                <th class="avatar-col"></th>
+                {% for day in beards.days %}
+                <th class="date {% if beards.today > day %}past{% endif %} {% if beards.today < day %}future{% endif %} {% if beards.today == day %}today{% endif %}">
+                    <span class="month">{{day|date:"M"}}</span>
+                    <span class="day">{{day|date:"d"}}</span>
+                </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for user, entries in beards.entries.items %}
+            <tr data-user-id="{{ user.id }}" data-user-name="{{ user.username }}">
+                <th class="avatar-col" scope="row">
+                    {{ user }}
+                </th>
+                {% for entry in entries %}
+                <td data-entry-id="{{ entry.entry.id }}" class="entry {% if beards.today > entry.date %}past{% endif %} {% if beards.today < entry.date %}future{% endif %} {% if beards.today == entry.date %}today{% endif %}">
+                    {% if entry.entry %}
+                        {% thumbnail entry.entry.file "80x80" crop="center" format="PNG" quality=100 as im %}
+                        <a href="{% url 'beard-details' entry.entry.id %}" target="_blank"><img src="{{  im.url }}" /></a>
+                        {% endthumbnail %}
+                    {% else %}
+                        <img src="{% static 'img/beard.png' %}" width="80" height="80" />
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>

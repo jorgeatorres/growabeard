@@ -7,11 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{% endblock %}</title>
   <script type="text/javascript" src="{% static 'vendor/jquery/jquery-3.0.0.min.js' %}"></script>
-  <link rel="stylesheet" href="{% static 'css/growabeard.css' %}" />
-  <script type="text/javascript" src="{% static 'javascripts/growabeard.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'vendor/magnific-popup/magnific-popup.css' %}" />
+  <script type="text/javascript" src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'growabeard.css' %}" />
+  <script type="text/javascript" src="{% static 'growabeard.js' %}"></script>
   {% block head %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %} {% if request.user.is_authenticated %}logged-in{% endif %} view-{{ request.resolver_match.view_name|default:'unknown' }}">
+    {% block header %}{% endblock %}
+
     <div class="main-content">
     {% if messages %}
         {% for message in messages %}

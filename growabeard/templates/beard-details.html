@@ -1,0 +1,15 @@
+{% load thumbnail %}
+<div class="beard-details-card">
+    <div class="image-big">
+        <img src="{{ entry.file.url }}" />
+    </div>
+
+    <div class="image-actions">
+        {% if entry.user == request.user %}
+            <a href="{% url 'beard-rotate' entry.id %}" class="rotate-it"><i class="fa fa-rotate-right"></i> Rotate</a>
+        {% endif %}
+
+        <a href="{{ entry.file.url }}" class="download-it" target="_blank"><i class="fa fa-download"></i> Download</a>
+        <a href="#" target="_blank" class="heart-it pull-right"><i class="fa fa-heart"></i></a>
+    </div>
+</div>

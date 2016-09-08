@@ -1,0 +1,391 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a, a:active, a:visited {
+    color: #000;
+}
+
+a:hover {
+    color: #336699;
+}
+
+.header {
+    background: #efefef;
+    padding: 5px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.main-content {
+    margin: 20px 10px;
+    overflow: scroll;
+}
+
+
+.flash {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border: solid 1px #e6db55;
+    background: #fffbcc;
+    border-radius: 5px;
+}
+
+.flash.flash-error {
+    background: #fcdede;
+    color: #911;
+    border-color: #d2b2b2;
+}
+
+.pull-right { float: right; }
+.pull-left { float: left; }
+.clearfix:after { content: ""; display: table; clear: both; }
+
+
+form label {
+    display: block;
+    margin: 0;
+    font-weight: normal;
+}
+
+form input,
+form textarea,
+form select {
+    /* margin: 5px 0 15px 0; */
+}
+
+form label {
+    margin: 15px 0 5px 0;
+}
+
+form .form-actions {
+    margin: 15px 0;
+    padding: 15px 0 0 0;
+    border-top: 1px solid #eee;
+}
+
+form .form-actions input[type="submit"] {
+    float: right;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form textarea,
+form select {
+    min-height: 34px;
+    padding: 6px 8px;
+    line-height: 20px;
+    color: #333;
+    vertical-align: middle;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form textarea {
+    width: 100%;
+}
+
+form select[multiple="multiple"] {
+    min-height: 150px;
+}
+
+form input[type="button"], form input[type="submit"], form input[type="reset"], .btn {
+    padding: 6px 12px;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    background-color: #eee;
+    background-image: linear-gradient(#fcfcfc, #eee);
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+}
+
+form input[type="button"]:hover,
+form input[type="submit"]:hover,
+form input[type="reset"]:hover, .btn:hover {
+    background-color: #ddd;
+    background-image: linear-gradient(#eee, #ddd);
+    border-color: #ccc;
+    color: #333;
+}
+
+form input[type="submit"] {
+    background-color: #337ab7;
+    background-image: linear-gradient(#7eb1dc, #337ab7);
+    border-color: #2e6da4;
+    color: #fff;
+}
+
+form input[type="submit"]:hover {
+    background-color: #337ab7;
+    background-image: linear-gradient(#337ab7, #094b83);
+    border-color: #032d50;
+}
+
+form .helptext {
+    font-size: 12px;
+    color: #767676;
+    margin: 4px 0 2px;
+}
+
+.user-avatar {
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    background: #999;
+    border-radius: 50%;
+    font-size: 11px;
+    text-transform: uppercase;
+    padding-top: 16px;
+    color: #fff;
+}
+
+.sidebar-left {
+    width: 200px;
+}
+
+.view-campaign-details .campaign-title {
+    text-transform: uppercase;
+    font-size: 200%;
+    display: inline;
+}
+
+.view-campaign-details .campaign-actions {
+    margin-top: 5px;
+}
+
+.view-campaign-details .campaign-times {
+   text-transform: uppercase;
+   margin-left: 30px;
+   color: #666;
+}
+
+.beards-wrapper {
+    margin: 25pt 0 0 0;
+}
+
+.beards {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.beards th.date {
+    width: 80px;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.beards th.date .month {
+    display: block;
+    font-size: 120%;
+}
+
+.beards th.date .day {
+    display: block;
+    font-size: 200%;
+}
+
+.beards tbody tr {
+    height: 80px;
+}
+
+.beards .avatar-col {
+    width: 120px;
+    padding: 5px 0;
+    border-right: 1px dotted #ccc;
+}
+
+.beards thead .avatar-col {
+    border-right: none;
+}
+
+.beards .entry {
+    width: 80px;
+    height: 80px;
+    vertical-align: middle;
+}
+
+.beards .past, .beards .future {
+    opacity: 0.65;
+}
+
+.beard-details-card {
+    padding: 20px;
+    width: 600px;
+    background: #fff;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.beard-details-card .image-big {
+    position: relative;
+    overflow: hidden;
+    width: 560px;
+    height: 400px;
+}
+
+.beard-details-card .image-big img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    transform: translate(-50%, -50%);
+}
+
+.beard-details-card .image-actions {
+    margin: 10px 0 0 0;
+}
+
+.beard-details-card .image-actions a {
+    margin-left: 10px;
+}
+
+/* .campaign-entries-h .campaign-dates { */
+/*     display: block; */
+/*     height: 60px; */
+/*     margin-left: 120px; */
+/* } */
+/*  */
+/* .campaign-entries-h .campaign-dates .date { */
+/*     width: 90px; */
+/*     /* margin-left: 5px; */ */
+/*     display: inline-block; */
+/* } */
+/*  */
+/* .campaign-entries-h .campaign-dates:after { */
+/*     content: ""; */
+/*     display: table; */
+/*     clear: both; */
+/* } */
+/*  */
+/* .campaign-entries-h .campaign-dates .date:first-child { */
+/*     margin-left: 0; */
+/* } */
+/*  */
+/* .campaign-entries-h .campaign-dates .date .month, */
+/* .campaign-entries-h .campaign-dates .date .day { */
+/*     display: block; */
+/*     text-transform: uppercase; */
+/*     color: #777; */
+/*     text-align: center; */
+/* } */
+/*  */
+/* .campaign-entries-h .campaign-dates .date .month { */
+/*     font-size: 120%; */
+/* } */
+/*  */
+/* .campaign-entries-h .campaign-dates .date .day { */
+/*     font-size: 200%; */
+/* } */
+/*  */
+/* .campaign-entries-h .user-col { */
+/*     width: 120px; */
+/*     float: left; */
+/* } */
+/*  */
+/* .campaign-entries-h .user-col, */
+/* .campaign-entries-h .entry { */
+/*     float: left; */
+/* } */
+/*  */
+/* .campaign-entries-h .user-entries { */
+/*     height: 100px; */
+/*     padding-bottom: 10px; */
+/*     border-bottom: 1px dotted #ccc; */
+/*     margin-bottom: 10px; */
+/*     overflow: hidden; */
+/* } */
+/*  */
+/* .campaign-entries-h .user-entries:after { */
+/*     content: ""; */
+/*     display: table; */
+/*     clear: both; */
+/* } */
+/*  */
+/* .campaign-entries-h .entry { */
+/*     width: 90; */
+/*     margin-left: 5px; */
+/* } */
+/*  */
+/* .campaign-entries-h .user-entries .entry:nth-child(2) { */
+/*     margin-left: 0; */
+/* } */
+/*  */
+/* .campaign-entries-h .entry img { */
+/*     width: 90px; */
+/*     height: 90px; */
+/*     border-radius: 50%; */
+/* } */
+
+
+/* .campaign-entries { */
+/*     margin: 20pt 20pt; */
+/*     width: 100%; */
+/*     border-collapse: collapse; */
+/* } */
+/*  */
+/* .campaign-entries thead { */
+/*     border-bottom: 1px solid #ddd; */
+/* } */
+/*  */
+/* .campaign-entries th, */
+/* .campaign-entries td { */
+/*     padding: 5px; */
+/*     font-weight: normal; */
+/* } */
+/*  */
+/* .campaign-entries th { */
+/*     vertical-align: top; */
+/* } */
+/*  */
+/* .campaign-day-date { */
+/*     text-align: left; */
+/* } */
+/*  */
+/* .campaign-entry { */
+/*     width: 80px; */
+/*     height: 100px; */
+/* } */
+/*  */
+/* .campaign-entry img { */
+/*     width: 80px; */
+/*     height: 100px; */
+/*     border-radius: 10px; */
+/* } */
+/*  */
+/* .campaign-date-row { */
+/* } */
+/*  */
+/* .campaign-date-row.today { */
+/*     background: #efefef; */
+/* } */
+/*  */
+/* .campaign-date-row.today .campaign-day-date { */
+/*     font-weight: bold; */
+/* } */
+/*  */
+/* .campaign-date-row.future { */
+/*     opacity: 0.5; */
+/* } */
+/*  */
+/*  */
+/*  */
