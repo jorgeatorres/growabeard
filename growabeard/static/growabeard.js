@@ -2,7 +2,16 @@ jQuery(function($) {
     $('.beards .entry a').magnificPopup({
         type: 'ajax',
         closeBtnInside: true,
-        overflowY: 'scroll'
+        overflowY: 'scroll',
+        callbacks: {
+            open: function() {
+                location.hash = '#entry-' + $(this.currItem.el).parents('.entry').data('entry-id');
+            },
+
+            afterClose: function() {
+                location.hash = '';
+            }
+        }
     });
 
     $('body').on('click', 'a.heart-it', function(e) {
