@@ -22,15 +22,15 @@ urlpatterns = [
     url(r'^c/(?P<id>[0-9]+)/$', views.campaign_details, name='campaign-details'),
     url(r'^upload/$', views.upload, name='upload'),
 
-    url(r'^$', views.index),
+    url(r'^$', views.index, name='index'),
     url(r'^beard/(?P<id>[0-9]+)/$', views.beard_details, name='beard-details'),
     url(r'^beard/(?P<id>[0-9]+)/rotate/$', views.beard_rotate, name='beard-rotate'),
 
-    url(r'^', include('django.contrib.auth.urls')),
-    # url(r'^login/$', views.twitter_login, name='login'),
+    #url(r'^', include('django.contrib.auth.urls')),
+    url(r'^login/$', views.twitter_login, name='login'),
     url(r'^authenticated/$', views.twitter_authenticate, name='authenticated'),
 
     url(r'^admin/', admin.site.urls),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

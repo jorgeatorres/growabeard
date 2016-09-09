@@ -34,7 +34,7 @@ def upload(request):
 
     if campaign.entries.filter(user=request.user, created_at__date=today).exists():
         messages.error(request, 'You\'ve already uploaded an image for today.')
-        return redirect('/')
+        return redirect('index')
 
     form = UploadForm(request.POST or None, request.FILES or None)
     if form.is_valid():

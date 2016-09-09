@@ -47,7 +47,8 @@ class CampaignEntry(models.Model):
         rotated = StringIO.StringIO()
 
         image = Image.open(orig)
-        image = image.rotate(-90, expand=True)
+        #image = image.rotate(-90, expand=True)
+	image = image.transpose(Image.ROTATE_90)
         image.save(rotated, 'PNG')
 
         self.file.save(os.path.basename(self.file.path), ContentFile(rotated.getvalue()))
