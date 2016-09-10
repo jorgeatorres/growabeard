@@ -5,7 +5,7 @@
     </div>
 
     <div class="image-actions">
-        {% if entry.user == request.user %}
+        {% if entry.user == request.user or request.user.is_staff %}
             <a href="{% url 'beard-rotate' entry.id %}" class="rotate-it"><i class="fa fa-rotate-right"></i> Rotate</a>
         {% endif %}
 

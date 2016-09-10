@@ -40,7 +40,7 @@ def upload(request):
     if form.is_valid():
         campaign.entries.create(user=request.user, file=request.FILES['image'], created_at=datetime.now())
         messages.success(request, 'Thanks for sharing your beard progress!')
-        return redirect('/')
+        return redirect('index')
 
     return render(request, 'upload.html', dict(form=form))
 
@@ -150,7 +150,7 @@ def beard_details(request, id):
 def beard_rotate(request, id):
     entry = get_object_or_404(CampaignEntry, pk=id)
 
-    if not entry.user == request.user:
+    if not (entry.user == request.user or request.user.is_staff):
         return HttpResponseForbidden()
 
     entry.rotate()
